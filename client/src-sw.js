@@ -19,6 +19,15 @@ const pageCache = new CacheFirst({
   ],
 });
 
+// const fallbackURL = '/offline.html';
+// const fallbackResponse = new Response('<h1>Offline Page</h1>', {
+//   headers: { 'Content-Type': 'text/html'}
+// });
+
+// offlineFallback({
+//   fallbackResponse,
+// });
+
 warmStrategyCache({
   urls: ['/index.html', '/'],
   strategy: pageCache,
