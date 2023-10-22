@@ -19,15 +19,6 @@ const pageCache = new CacheFirst({
   ],
 });
 
-// const fallbackURL = '/offline.html';
-// const fallbackResponse = new Response('<h1>Offline Page</h1>', {
-//   headers: { 'Content-Type': 'text/html'}
-// });
-
-// offlineFallback({
-//   fallbackResponse,
-// });
-
 warmStrategyCache({
   urls: ['/index.html', '/'],
   strategy: pageCache,
@@ -35,7 +26,7 @@ warmStrategyCache({
 
 registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
-// TODO: Implement asset caching
+// Implementing asset caching
 registerRoute(
   ({ request }) => ['style', 'script', 'worker'].includes(request.destination),
   new StaleWhileRevalidate({
